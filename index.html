@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -8,10 +9,10 @@
 </head>
 <body>
     
-    <nav>
+    <nav class="nav">
         <ul>
             <li><a href="#objetivo">Objetivo</a></li>
-            <li><a href="#nome-projeto">Nome do Projeto</a></li>
+            <li><a href="#nome-projeto">Sistema de Irrigação Inteligente</a></li>
             <li><a href="#descricao">Descrição do Projeto</a></li>
             <li><a href="#palavras-chave">Palavras-chave</a></li>
             <li><a href="#autores">Autores</a></li>
@@ -30,21 +31,22 @@
         
         <section id="objetivo">
             <h2>Objetivo</h2>
-            <p>Este tutorial guiará o desenvolvimento de um site onde será documentado o projeto realizado na disciplina de Sistemas Digitais.</p>
+            <p>O objetivo deste projeto é desenvolver um sistema de irrigação inteligente utilizando o Arduino para otimizar o consumo de água em plantações e jardins, garantindo uma irrigação eficiente e automatizada com base nas condições reais do solo e ambiente. A proposta busca atender tanto profissionais da agricultura quanto pequenos produtores e jardineiros, oferecendo uma solução de baixo custo e fácil implementação.</p>
         </section>
 
        
         <section id="nome-projeto">
-            <h2>Nome do Projeto</h2>
-            <p>Adicione o nome oficial do projeto aqui.</p>
+            <h2>Nome do projeto</h2>
+            <p>Sistema Irrigação Inteligente</p>
         </section>
 
        
         <section id="descricao">
             <h2>Descrição do Projeto</h2>
-            <p><strong>Motivação:</strong> Explique a importância do projeto.</p>
-            <p><strong>Objetivo:</strong> Descreva os objetivos do projeto.</p>
-            <p><strong>Contextualização:</strong> Explique o contexto e área de aplicação.</p>
+            <p><strong>Motivação:</strong> A motivação para desenvolver o sistema de irrigação inteligente surge da necessidade crescente de preservação dos recursos naturais, especialmente a água, que é um recurso limitado e essencial para a agricultura. Em um cenário de mudanças climáticas, onde as secas são mais frequentes e imprevisíveis, é fundamental buscar soluções que combinem sustentabilidade e tecnologia.
+            Além disso, o projeto busca facilitar a vida de pequenos agricultores e jardineiros que enfrentam dificuldades em monitorar constantemente as necessidades de irrigação de suas plantas. Ao automatizar esse processo com o uso de sensores e o Arduino, o sistema visa promover uma agricultura mais eficiente, reduzindo custos operacionais e aumentando a produtividade.</p>
+            <p><strong>Objetivo:</strong> A ideia é criar um sistema que, de forma autônoma, detecte a umidade do solo e ative a irrigação apenas quando necessário, evitando o excesso de água. Em casos mais avançados, pode-se integrar o projeto com uma rede de sensores IoT para monitoramento e ajustes em tempo real, usando tecnologias de conectividade como o Wi-Fi ou Bluetooth.</p>
+            <p><strong>Contextualização:</strong> O Sistema de Irrigação Inteligente pode ser utilizado por donas de casa ocupadas e  Explique o contexto e área de aplicação.</p>
             <h3>Esquema Conceitual</h3>
             <p>Insira uma imagem ou esquema conceitual do artefato interativo.</p>
         </section>
@@ -53,28 +55,44 @@
         <section id="palavras-chave">
             <h2>Palavras-chave</h2>
             <ul>
-                <li>Palavra-chave 1</li>
-                <li>Palavra-chave 2</li>
-                <li>Palavra-chave 3</li>
+                <li> Irrigação </li>
+                <li> Arduíno </li>
+                <li> Automatização </li>
             </ul>
         </section>
 
         
         <section id="autores">
             <h2>Autores</h2>
-            <p>Nome dos autores com fotos e links para perfis no GitHub e LinkedIn.</p>
+            <p> Cecília Medeiros Souza - https://github.com/Cecimedeiros -  www.linkedin.com/in/medeiroscecilia22 </p>
+            <p> Isabella Bastista -  https://github.com/BatistaIsabella - https://br.linkedin.com/in/isabella-batista-a096452b2LinkedIn.</p>
+            <p> Beatriz Paredes do Nascimento - Nome dos autores com fotos e links para perfis no GitHub - https://www.linkedin.com/in/beatriz-paredes-do-nascimento-91664a182/ </p>
+            <p> Catarina Virgínia Lima Loureiro Xavier - https://github.com/Catarina-loureiro - https://br.linkedin.com/in/catarina-virginia-lima-loureiro-xavier-439731338 </p>
+            <p> Melissa Vitória Filgueiras - https://github.com/mweliss - https://www.linkedin.com/in/melissa-filgueiras-84b778223/ </p>
         </section>
 
         
         <section id="componentes">
             <h2>Componentes e Suprimentos</h2>
-            <p>Listagem detalhada dos componentes usados no projeto.</p>
+            <ol>
+             <li> Arduino Uno R3 </li>
+             <li> Sensor de umidade do solo </li>
+             <li> 1-Way Relay Module</li>
+             <li> Bomba d'água (ou LED para simulação) </li>   
+             <li> Resistor de 220Ω </li>  
+             <li> Breadboard e cabos jumper </li>   
+             <li> IIC LCD1602 </li>   
+            </ol>
+            
         </section>
 
         
         <section id="aplicativos">
             <h2>Aplicativos e Plataforma</h2>
-            <p>Lista dos aplicativos e plataformas utilizados no projeto.</p>
+            <ul>
+                <li> 1. Chat-GPT </li>
+                <li> 2. Driver </li>
+            </ul>
         </section>
 
         
@@ -86,7 +104,53 @@
        
         <section id="codigo">
             <h2>Código</h2>
-            <p>Trechos de código com formatação adequada.</p>
+            <p>
+                #include <LiquidCrystal_I2C.h>
+
+                    // Configuração do LCD
+                    LiquidCrystal_I2C lcd(0x27, 16, 2);
+                    
+                    // Definição dos pinos
+                    const int sensorPin = A0;
+                    const int relayPin = 8;
+                    
+                    int umidade;
+                    
+                    void setup() {
+                      pinMode(sensorPin, INPUT);
+                      pinMode(relayPin, OUTPUT);
+                      digitalWrite(relayPin, HIGH); // Relé desligado inicialmente
+                    
+                      // Inicialização do LCD
+                      lcd.begin(16, 2);
+                      lcd.print("Irrigacao Auto");
+                      delay(2000);
+                      lcd.clear();
+                    }
+                    
+                    void loop() {
+                      // Leitura do sensor de umidade
+                      umidade = analogRead(sensorPin);
+                    
+                      // Exibir valor no LCD
+                      lcd.setCursor(0, 0);
+                      lcd.print("Umidade: ");
+                      lcd.print(umidade);
+                    
+                      // Verificar a umidade e acionar o relé
+                      if (umidade < 400) { // Valor ajustável conforme necessário
+                        digitalWrite(relayPin, LOW); // Liga a bomba (ou LED)
+                        lcd.setCursor(0, 1);
+                        lcd.print("Regando...");
+                      } else {
+                        digitalWrite(relayPin, HIGH); // Desliga a bomba (ou LED)
+                        lcd.setCursor(0, 1);
+                        lcd.print("Solo OK      ");
+                      }
+                    
+                      delay(2000); // Aguardar 2 segundos antes de repetir
+                    }
+            </p>
             <p><a href="https://github.com/seu-usuario/seu-projeto" target="_blank">Repositório do GitHub</a></p>
         </section>
 
@@ -105,8 +169,8 @@
         
         <section id="problemas">
             <h2>Problemas enfrentados e Lições Aprendidas</h2>
-            <p><strong>Desafios:</strong> Descrição dos desafios enfrentados.</p>
-            <p><strong>Lições Aprendidas:</strong> Principais aprendizados da equipe.</p>
+            <p><strong>Desafios:</strong> O projeto envolve a utilização da linguagem de programação C++, o que dificultou o desenvolvimento e o andamento do protótipo de irrigação. </p>
+            <p><strong>Lições Aprendidas:</strong> Desenvolvemos habilidades, como: Gestão de tempo, gestão de projetos, C++, manipulação de HTML, CSS, JavaScript, manipulação e criação de projetos com arduíno uno. </p>
         </section>
     </main>
 

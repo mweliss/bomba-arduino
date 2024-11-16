@@ -1,64 +1,140 @@
+/* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Corpo */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     line-height: 1.6;
+    background-color: #f9f9f9;
+    padding-top: 60px; /* Espaço para o menu fixo */
 }
 
+/* Menu de Navegação */
 nav {
-    background-color: #333;
-    color: #fff;
-    padding: 1rem;
+    background-color: #4d6a0f;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 9px #000000;
 }
 
 nav ul {
-    list-style-type: none;
+    list-style: none;
     display: flex;
-    gap: 1rem;
-    justify-content: center;
+    justify-content: space-around;
+    padding: 2rem 0;
 }
 
 nav a {
     color: #fff;
     text-decoration: none;
+    font-size: 0.8rem;
 }
 
-nav a:hover {
-    text-decoration: underline;
+nav a:hover, nav a.active {
+    color: #ffdd57;
+    font-weight: bold;
 }
 
-main {
-    padding: 1rem;
-}
-
+/* Estilo de Seções */
 section {
-    margin-bottom: 2rem;
+    padding: 2rem;
+    margin: 1rem auto;
+    max-width: 800px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
-    color: #333;
-    margin-bottom: 0.5rem;
+/* Paleta de cores */
+#objetivo {
+    background-color: #e3f2fd;
+    border: 1px solid #90caf9;
 }
 
+#nome-projeto {
+    background-color: #e8f5e9;
+    border: 1px solid #a5d6a7;
+}
+
+#descricao {
+    background-color: #efebe9;
+    border: 1px solid #bcaaa4;
+}
+
+#palavras-chave {
+    background-color: #e3f2fd;
+    border: 1px solid #90caf9;
+}
+
+#autores {
+    background-color: #e8f5e9;
+    border: 1px solid #a5d6a7;
+}
+
+#componentes {
+    background-color: #efebe9;
+    border: 1px solid #bcaaa4;
+}
+
+#aplicativos {
+    background-color: #e3f2fd;
+    border: 1px solid #90caf9;
+}
+
+#passo-a-passo {
+    background-color: #e8f5e9;
+    border: 1px solid #a5d6a7;
+}
+
+#codigo {
+    background-color: #efebe9;
+    border: 1px solid #bcaaa4;
+}
+
+#download {
+    background-color: #e3f2fd;
+    border: 1px solid #90caf9;
+    text-align: center;
+}
+
+#video {
+    background-color: #e8f5e9;
+    border: 1px solid #a5d6a7;
+    text-align: center;
+}
+
+#problemas {
+    background-color: #efebe9;
+    border: 1px solid #bcaaa4;
+}
+
+/* Botão */
 button {
-    background-color: #333;
-    color: #fff;
+    background-color: #007bff;
+    color: white;
     border: none;
     padding: 0.5rem 1rem;
+    border-radius: 4px;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #555;
+    background-color: #0056b3;
 }
 
+/* Responsividade */
 @media (max-width: 768px) {
     nav ul {
         flex-direction: column;
         align-items: center;
+    }
+
+    nav a {
+        margin: 0.5rem 0;
     }
 }
