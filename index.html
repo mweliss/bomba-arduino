@@ -10,12 +10,14 @@
 <body>
     
     <nav class="nav">
-        <ul>
+        <div class="menu-toggle" id="menu-toggle">
+            ☰ 
+        </div>
+        <ul class="menu">
             <li><a href="#objetivo">Objetivo</a></li>
-            <li><a href="#nome-projeto">Sistema de Irrigação Inteligente</a></li>
             <li><a href="#descricao">Descrição do Projeto</a></li>
             <li><a href="#palavras-chave">Palavras-chave</a></li>
-            <li><a href="#autores">Autores</a></li>
+            <li><a href="#autores">Autoras</a></li>
             <li><a href="#componentes">Componentes e Suprimentos</a></li>
             <li><a href="#aplicativos">Aplicativos e Plataforma</a></li>
             <li><a href="#passo-a-passo">Passo a Passo</a></li>
@@ -26,18 +28,19 @@
         </ul>
     </nav>
 
+    <div id="waterfall"></div>
+    <div id="pool"></div>
+    <script src="script.js"></script>
     
     <main>
         
+        <section id="nome-projeto">
+        <h1>Sistema de Irrigação Inteligente</h1>
+        </section>
+
         <section id="objetivo">
             <h2>Objetivo</h2>
             <p>O objetivo deste projeto é desenvolver um sistema de irrigação inteligente utilizando o Arduino para otimizar o consumo de água em plantações e jardins, garantindo uma irrigação eficiente e automatizada com base nas condições reais do solo e ambiente. A proposta busca atender tanto profissionais da agricultura quanto pequenos produtores e jardineiros, oferecendo uma solução de baixo custo e fácil implementação.</p>
-        </section>
-
-       
-        <section id="nome-projeto">
-            <h2>Nome do projeto</h2>
-            <p>Sistema Irrigação Inteligente</p>
         </section>
 
        
@@ -48,7 +51,9 @@
             <p><strong>Objetivo:</strong> A ideia é criar um sistema que, de forma autônoma, detecte a umidade do solo e ative a irrigação apenas quando necessário, evitando o excesso de água. Em casos mais avançados, pode-se integrar o projeto com uma rede de sensores IoT para monitoramento e ajustes em tempo real, usando tecnologias de conectividade como o Wi-Fi ou Bluetooth.</p>
             <p><strong>Contextualização:</strong> O Sistema de Irrigação Inteligente pode ser utilizado por donas de casa ocupadas e  Explique o contexto e área de aplicação.</p>
             <h3>Esquema Conceitual</h3>
-            <p>Insira uma imagem ou esquema conceitual do artefato interativo.</p>
+            <div id="descricao">
+            <img src="./assets/img/esquema.png" alt="Foto esquema conceitual">
+            </div>
         </section>
 
         
@@ -63,107 +68,121 @@
 
         
         <section id="autores">
-            <h2>Autores</h2>
-            <p> Cecília Medeiros Souza - https://github.com/Cecimedeiros -  www.linkedin.com/in/medeiroscecilia22 </p>
-            <p> Isabella Bastista -  https://github.com/BatistaIsabella - https://br.linkedin.com/in/isabella-batista-a096452b2LinkedIn.</p>
-            <p> Beatriz Paredes do Nascimento - Nome dos autores com fotos e links para perfis no GitHub - https://www.linkedin.com/in/beatriz-paredes-do-nascimento-91664a182/ </p>
-            <p> Catarina Virgínia Lima Loureiro Xavier - https://github.com/Catarina-loureiro - https://br.linkedin.com/in/catarina-virginia-lima-loureiro-xavier-439731338 </p>
-            <p> Melissa Vitória Filgueiras - https://github.com/mweliss - https://www.linkedin.com/in/melissa-filgueiras-84b778223/ </p>
+            <h2>Autoras</h2>
+            <div class="autores-container">
+                <div class="autor">
+                    <img src="./assets/img/ceci.jpg" alt="Foto de Cecília Medeiros Souza">
+                    <h3>Cecília Medeiros</h3>
+                    <a href="https://github.com/Cecimedeiros" target="_blank">GitHub</a>
+                    <a href="https://www.linkedin.com/in/medeiroscecilia22" target="_blank">LinkedIn</a>
+                </div>
+                <div class="autor">
+                    <img src="./assets/img/bella.enc" alt="Foto de Isabella Batista">
+                    <h3>Isabella Batista</h3>
+                    <a href="https://github.com/BatistaIsabella" target="_blank">GitHub</a>
+                    <a href="https://br.linkedin.com/in/isabella-batista-a096452b2" target="_blank">LinkedIn</a>
+                </div>
+                <div class="autor">
+                    <img src="./assets/img/bia.jpg" alt="Foto de Beatriz Paredes do Nascimento">
+                    <h3>Beatriz Paredes</h3>
+                    <a href="https://github.com/BeatrizParedes" target="_blank">GitHub</a>
+                    <a href="https://www.linkedin.com/in/beatriz-paredes-do-nascimento-91664a182/" target="_blank">LinkedIn</a>
+                </div>
+                <div class="autor">
+                    <img src="./assets/img/cata.jpg" alt="Foto de Catarina Virgínia Lima Loureiro Xavier">
+                    <h3>Catarina Loureiro</h3>
+                    <a href="https://github.com/Catarina-loureiro" target="_blank">GitHub</a>
+                    <a href="https://br.linkedin.com/in/catarina-virginia-lima-loureiro-xavier-439731338" target="_blank">LinkedIn</a>
+                </div>
+                <div class="autor">
+                    <img src="./assets/img/mel.jpg" alt="Foto de Melissa Vitória Filgueiras">
+                    <h3>Melissa Filgueiras</h3>
+                    <a href="https://github.com/mweliss" target="_blank">GitHub</a>
+                    <a href="https://www.linkedin.com/in/melissa-filgueiras-84b778223/" target="_blank">LinkedIn</a>
+                </div>
+            </div>
         </section>
-
         
-        <section id="componentes">
-            <h2>Componentes e Suprimentos</h2>
-            <ol>
-             <li> Arduino Uno R3 </li>
-             <li> Sensor de umidade do solo </li>
-             <li> 1-Way Relay Module</li>
-             <li> Bomba d'água (ou LED para simulação) </li>   
-             <li> Resistor de 220Ω </li>  
-             <li> Breadboard e cabos jumper </li>   
-             <li> IIC LCD1602 </li>   
-            </ol>
-            
+        <div id="componentes-container">
+            <div id="foto-coluna">
+                <img src="./assets/img/sistema.jpg" alt="Foto do sistema com todos os componentes">
+            </div>
+            <section id="componentes">
+                <h2>Componentes <br> e Suprimentos </h2>
+                <br>
+                <ol>
+                    <li>BlackBoard UNO R3</li>
+                    <li>Soil Humidity Sensor</li>
+                    <li>LED Vermelho</li>
+                    <li>Jumpers M/M</li>
+                    <li>Jumpers M/F</li>
+                    <li>Resistor de 300 Ohms</li>
+                    <li>Cabo USB</li>
+                </ol>
+            </section>
+        </div>
+        
+        
         </section>
 
         
         <section id="aplicativos">
             <h2>Aplicativos e Plataforma</h2>
             <ul>
-                <li> 1. Chat-GPT </li>
-                <li> 2. Driver </li>
+                <li> 1. Driver </li>
+                <li> 2. Thinkercad </li>
             </ul>
         </section>
 
         
         <section id="passo-a-passo">
             <h2>Passo a Passo</h2>
-            <p>Descrição de cada etapa com imagens ilustrativas.</p>
+            <img src="./assets/img/passos.jpg" alt="passo-a-passo">
         </section>
 
-       
-        <section id="codigo">
+        <section id="codigo-container">
             <h2>Código</h2>
-            <p>
-                #include <LiquidCrystal_I2C.h>
-
-                    // Configuração do LCD
-                    LiquidCrystal_I2C lcd(0x27, 16, 2);
-                    
-                    // Definição dos pinos
-                    const int sensorPin = A0;
-                    const int relayPin = 8;
-                    
-                    int umidade;
-                    
-                    void setup() {
-                      pinMode(sensorPin, INPUT);
-                      pinMode(relayPin, OUTPUT);
-                      digitalWrite(relayPin, HIGH); // Relé desligado inicialmente
-                    
-                      // Inicialização do LCD
-                      lcd.begin(16, 2);
-                      lcd.print("Irrigacao Auto");
-                      delay(2000);
-                      lcd.clear();
-                    }
-                    
-                    void loop() {
-                      // Leitura do sensor de umidade
-                      umidade = analogRead(sensorPin);
-                    
-                      // Exibir valor no LCD
-                      lcd.setCursor(0, 0);
-                      lcd.print("Umidade: ");
-                      lcd.print(umidade);
-                    
-                      // Verificar a umidade e acionar o relé
-                      if (umidade < 400) { // Valor ajustável conforme necessário
-                        digitalWrite(relayPin, LOW); // Liga a bomba (ou LED)
-                        lcd.setCursor(0, 1);
-                        lcd.print("Regando...");
-                      } else {
-                        digitalWrite(relayPin, HIGH); // Desliga a bomba (ou LED)
-                        lcd.setCursor(0, 1);
-                        lcd.print("Solo OK      ");
-                      }
-                    
-                      delay(2000); // Aguardar 2 segundos antes de repetir
-                    }
-            </p>
-            <p><a href="https://github.com/seu-usuario/seu-projeto" target="_blank">Repositório do GitHub</a></p>
+            <pre id="codigo">
+    #define ledPin 6
+    #define sensorPin A0
+    
+    void setup() {
+        Serial.begin(9600);
+        pinMode(ledPin, OUTPUT);
+        digitalWrite(ledPin, LOW);
+    }
+    
+    void loop() {
+        Serial.print("Analog output: ");
+        Serial.println(readSensor());
+        delay(500);
+    }
+    
+    int readSensor() {
+        int sensorValue = analogRead(sensorPin);  
+        int outputValue = map(sensorValue, 0, 1023, 255, 0); 
+        analogWrite(ledPin, outputValue); 
+        return outputValue;             
+    }
+            </pre>
         </section>
+    
 
+            </p>
+            <section id="download">
+                <button onclick="window.open('https://github.com/mweliss/codigo_irrigacao_arduino.git', '_blank')">Repositório do GitHub</button>
+            </section>            
        
         <section id="download">
             <h2>Download do Projeto</h2>
-            <button>Baixar Projeto Completo</button>
-        </section>
-
+            <a href="https://docs.google.com/document/d/1-WV--IGx3qtqY4YJ8smMGE7mekmqKk49WOGZPE9Mpsw/edit?tab=t.0" target="_blank">
+                <button>Baixar Projeto Completo</button>
+            </a>
+        </section>        
         
         <section id="video">
             <h2>Vídeo Tutorial</h2>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/seu-video-id" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/a1X2VN1OdV8?si=t-HPYfbcTmrfnt9W" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </section>
 
         
